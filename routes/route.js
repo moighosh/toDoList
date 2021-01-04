@@ -10,17 +10,17 @@ router.get('/todo', (req, res, next)=>{
 });
 
 //adding data
-router.post('/todo', (req, res, next)=>{
+router.post('/task', (req, res, next)=>{
   //logic to add data
   let newTask = new toDo({
     date: req.body.date,
     title: req.body.title,
-    description: req.body.desc
+    desc: req.body.desc
   });
 
   newTask.save((err, task)=>{
     if(err){
-      res.json({msg: 'Failed to add new Task'});
+      res.json({msg: 'Failed to add new Task due to following error -----> '+err});
     }
     else{
       res.json({msg: 'Task added succesfully'});
